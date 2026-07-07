@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Claw Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="machine-container">
+        <div class="machine-header">
+            <h2>LUCKY LADY</h2>
+            <div class="sub-header">ZHUA YI XIA</div>
+        </div>
+
+        <div class="play-area" id="playArea">
+            <div class="claw-assembly" id="clawAssembly">
+                <div class="claw-rod" id="clawRod"></div>
+                <div class="claw-hand" id="clawHand"></div>
+            </div>
+
+            <div class="prizes-container" id="prizesContainer">
+                </div>
+
+            <div class="drop-chute"></div>
+        </div>
+
+        <div class="control-panel">
+            <div class="joystick-wrapper">
+                <button class="control-btn" id="moveLeftBtn">◀ Left</button>
+                <button class="control-btn" id="moveRightBtn">Right ▶</button>
+            </div>
+            <button class="action-btn" id="grabBtn">GRAB!</button>
+        </div>
+        
+        <div class="machine-footer">
+            <div class="neon-circle">Joy is here</div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
