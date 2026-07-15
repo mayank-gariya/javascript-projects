@@ -1,0 +1,156 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    width:350px;
+    min-height:500px;
+
+    background:#f4f7fb;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.container{
+
+    width:100%;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#333;
+}
+
+.input-group{
+
+    margin-bottom:15px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+label{
+
+    margin-bottom:6px;
+
+    font-size:14px;
+
+    color:#444;
+}
+
+input{
+
+    padding:10px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+input:focus{
+
+    border-color:#5c6bc0;
+}
+
+.captcha-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:18px 0;
+
+    background:#eceff1;
+
+    border-radius:8px;
+
+    padding:12px;
+}
+
+#captchaText{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+
+    color:#3f51b5;
+
+    user-select:none;
+}
+
+#refreshCaptcha{
+
+    border:none;
+
+    background:#3f51b5;
+
+    color:white;
+
+    padding:10px 15px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+#refreshCaptcha:hover{
+
+    background:#283593;
+}
+
+#submitBtn{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#4caf50;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    margin-top:10px;
+}
+
+#submitBtn:hover{
+
+    background:#2e7d32;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Form</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Register</h2>
+
+        <form id="registerForm">
+
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    required
+                >
+            </div>
+
+            <div class="captcha-box">
+                <div id="captchaText"></div>
+
+                <button
+                    type="button"
+                    id="refreshCaptcha"
+                    title="Refresh CAPTCHA"
+                >
+                    ↻
+                </button>
+            </div>
+
+            <div class="input-group">
+                <label for="captchaInput">Enter CAPTCHA</label>
+                <input
+                    type="text"
+                    id="captchaInput"
+                    placeholder="Type CAPTCHA"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
