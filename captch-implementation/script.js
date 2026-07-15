@@ -14,6 +14,7 @@ const userName = document.querySelector("#userName");
 const quoteText = document.querySelector("#quoteText");
 const backButton = document.querySelector("#backButton");
 
+let history = JSON.parse(localStorage.getItem("userLogs")) || [];
 // CAPTCHA
 
 let generatedCaptcha = "";
@@ -130,7 +131,7 @@ const popup = function(){
         form.classList.remove("hidden");
         form.reset();
         generateCaptcha();
-
+        storeInformation()
     });
 
 }
@@ -140,10 +141,22 @@ const quote = async function(){
         const res = await fetch('https://dummyjson.com/quotes/random');
         const data = await res.json();
         
-        quoteText.textContent = `"${data.quote}" - written by ${data.author}`;
+        quoteText.textContent = `${data.quote}" - written by ${data.author}`;
  
     }catch (error) {
         console.error("Error fetching the quote:", error);
         quoteText.textContent = "Could not load quote.";
     }
 }
+
+const storeInformation = function(){
+    const userlog = {
+        'name':nameInput.value,
+        'email':emailInput.value,
+        'quote':quoteText.textContent,
+        'reister_at': new Date().toLocaleString()
+    }
+
+    history.push(userlog)
+    localStorage.setItem("userLogs", JSON.stringify(history));
+};
