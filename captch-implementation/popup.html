@@ -10,79 +10,104 @@
 <body>
 
     <div class="container">
+        <div>
+            <h2>Register</h2>
+            <form id="registerForm">
 
-        <h2>Register</h2>
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+                </div>
 
-        <form id="registerForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
 
-            <div class="input-group">
-                <label for="name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    required
-                >
-            </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
 
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    required
-                >
-            </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        required
+                    >
+                </div>
 
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter password"
-                    required
-                >
-            </div>
+                <div class="captcha-box">
+                    <div id="captchaText"></div>
 
-            <div class="input-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Confirm password"
-                    required
-                >
-            </div>
+                    <button
+                        type="button"
+                        id="refreshCaptcha"
+                        title="Refresh CAPTCHA"
+                    >
+                        ↻
+                    </button>
+                </div>
 
-            <div class="captcha-box">
-                <div id="captchaText"></div>
+                <div class="input-group">
+                    <label for="captchaInput">Enter CAPTCHA</label>
+                    <input
+                        type="text"
+                        id="captchaInput"
+                        placeholder="Type CAPTCHA"
+                        required
+                    >
+                </div>
 
-                <button
-                    type="button"
-                    id="refreshCaptcha"
-                    title="Refresh CAPTCHA"
-                >
-                    ↻
+                <button type="submit">
+                    Register
                 </button>
+
+            </form>
+
+        </div>
+            <div class="success-card hidden" id="successCard">
+            <div class="success-icon">
+                🎉
+            </div>
+            <h2>Registration Successful</h2>
+            <p class="welcome-text">
+                Welcome,
+                <span id="userName"></span>
+            </p>
+            <div class="quote-box">
+                <h4>Today's Quote</h4>
+                <p id="quoteText">
+                    Loading...
+                </p>
+
             </div>
 
-            <div class="input-group">
-                <label for="captchaInput">Enter CAPTCHA</label>
-                <input
-                    type="text"
-                    id="captchaInput"
-                    placeholder="Type CAPTCHA"
-                    required
-                >
-            </div>
-
-            <button type="submit">
-                Register
+            <button id="backButton">
+                Register Another User
             </button>
 
-        </form>
+        </div>
     </div>
+
+    
 
     <script src="script.js"></script>
 

@@ -1,7 +1,3 @@
-// ===========================
-// DOM Elements
-// ===========================
-
 const form = document.querySelector("#registerForm");
 
 const nameInput = document.querySelector("#name");
@@ -12,6 +8,11 @@ const captchaInput = document.querySelector("#captchaInput");
 
 const captchaText = document.querySelector("#captchaText");
 const refreshButton = document.querySelector("#refreshCaptcha");
+
+const successCard = document.querySelector("#successCard");
+const userName = document.querySelector("#userName");
+const quoteText = document.querySelector("#quoteText");
+const backButton = document.querySelector("#backButton");
 
 // CAPTCHA
 
@@ -112,10 +113,37 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-    alert("Registration Successful 🎉");
-
-    form.reset();
-    generateCaptcha();
+    popup();
 });
 
 generateCaptcha();
+
+const popup = function(){
+    form.classList.add("hidden");
+    successCard.classList.remove("hidden");
+
+    userName.textContent = name
+    quote()
+
+    backButton.addEventListener("click", () => {
+        successCard.classList.add("hidden");
+        form.classList.remove("hidden");
+        form.reset();
+        generateCaptcha();
+
+    });
+
+}
+
+const quote = async function(){
+    try {
+        const res = await fetch('https://dummyjson.com/quotes/random');
+        const data = await res.json();
+        
+        quoteText.textContent = `"${data.quote}" - written by ${data.author}`;
+ 
+    }catch (error) {
+        console.error("Error fetching the quote:", error);
+        quoteText.textContent = "Could not load quote.";
+    }
+}
