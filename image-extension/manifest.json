@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Image Swapper Fun",
+  "version": "1.0",
+  "description": "Swaps every image on the web with a custom one!",
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [""],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
