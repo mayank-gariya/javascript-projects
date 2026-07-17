@@ -1,4 +1,4 @@
-const TARGET_IMAGE_URL = "image-extension/rock.jpg"; 
+const TARGET_IMAGE_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfUq3bVUIl42IFJVIYgDqa_4h_maCnPutzjMZt71HhsGIjrUx8O7g4VOk&s=10"; 
 
 function swapImages() {
   const images = document.querySelectorAll('img');
