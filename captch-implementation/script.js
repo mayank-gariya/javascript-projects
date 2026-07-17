@@ -13,9 +13,9 @@ const successCard = document.querySelector("#successCard");
 const userName = document.querySelector("#userName");
 const quoteText = document.querySelector("#quoteText");
 const backButton = document.querySelector("#backButton");
+const logsContainer = document.getElementById('logsContainer');
 
 let history = JSON.parse(localStorage.getItem("userLogs")) || [];
-// CAPTCHA
 
 let generatedCaptcha = "";
 
@@ -127,11 +127,11 @@ const popup = function(){
     quote()
 
     backButton.addEventListener("click", () => {
+        storeInformation()
         successCard.classList.add("hidden");
         form.classList.remove("hidden");
         form.reset();
         generateCaptcha();
-        storeInformation()
     });
 
 }
@@ -149,14 +149,60 @@ const quote = async function(){
     }
 }
 
-const storeInformation = function(){
-    const userlog = {
-        'name':nameInput.value,
-        'email':emailInput.value,
-        'quote':quoteText.textContent,
-        'reister_at': new Date().toLocaleString()
+function renderLogs() {
+    // Clear previous logs
+    logsContainer.innerHTML = '';
+
+    if (history.length === 0) {
+        logsContainer.innerHTML = '<p style="color: #888; font-style: italic;">No registrations logged yet.</p>';
+        return;
     }
 
-    history.push(userlog)
+    // Render from newest to oldest
+    const reversedHistory = [...history].reverse();
+
+    reversedHistory.forEach(log => {
+        const logItem = document.createElement('div');
+        logItem.className = 'log-item';
+        
+        logItem.innerHTML = `
+            <p><strong>Name:</strong> ${log.name || 'N/A'}</p>
+            <p><strong>Email:</strong> ${log.email}</p>
+            <p class="log-time"><em>${log.register_at}</em></p>
+        `;
+        logsContainer.appendChild(logItem);
+    });
+}
+
+// Updated storeInformation function
+const storeInformation = function(e) {
+    if (e) e.preventDefault(); 
+
+    // 1. Create the user log object (grabbing current input values)
+    const userlog = {
+        'name': nameInput.value,
+        'email': emailInput.value,
+        'quote': quoteText.textContent,
+        'register_at': new Date().toLocaleString()
+    };
+
+    // 2. Push log to the array
+    history.push(userlog);
+
+    // 3. Save to localStorage
     localStorage.setItem("userLogs", JSON.stringify(history));
+    renderLogs();
 };
+
+// --- Your Submit Event Listener ---
+// const registerForm = document.getElementById('registerForm');
+// registerForm.addEventListener('submit', (e) => {
+//     storeInformation(e);
+    
+//     // Show the success card
+//     document.getElementById('userName').textContent = nameInput.value;
+//     document.getElementById('successCard').classList.remove('hidden');
+//     registerForm.parentElement.classList.add('hidden'); 
+// });
+
+document.addEventListener('DOMContentLoaded', renderLogs);
