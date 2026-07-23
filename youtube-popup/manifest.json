@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Auto YouTube PiP on Tab Switch",
+  "version": "1.0",
+  "description": "Automatically opens YouTube in Picture-in-Picture mode when switching tabs.",
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
