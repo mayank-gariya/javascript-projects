@@ -1,13 +1,35 @@
 chrome.tabs.onActivated.addListener(async (activeInfo) => {
-  // Get all open tabs to check which one is YouTube and which one is active
   const tabs = await chrome.tabs.query({});
   
-  tabs.forEach(tab => {
+  tabs.forEach(async (tab) => {
     if (tab.url && tab.url.includes("youtube.com/watch")) {
-      if (tab.id === activeInfo.tabId) {
-        chrome.tabs.sendMessage(tab.id, { action: "EXIT_PIP" }).catch(() => {});
-      } else {
-        chrome.tabs.sendMessage(tab.id, { action: "ENTER_PIP" }).catch(() => {});
+      const isCurrentTab = (tab.id === activeInfo.tabId);
+
+      try {
+        if (isCurrentTab) {
+          await chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => {
+              if (document.pictureInPictureElement) {
+                document.exitPictureInPicture().catch(() => {});
+              }
+            }
+          });
+        } else {
+          await chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => {
+              const video = document.querySelector('video');
+              if (video && !video.paused && document.pictureInPictureElement !== video) {
+                video.requestPictureInPicture().catch((err) => {
+                  console.log("PiP injection running...", err);
+                });
+              }
+            }
+          });
+        }
+      } catch (err) {
+        console.error(err);
       }
     }
   });
