@@ -1,0 +1,49 @@
+# ==========================================
+# Byte-compiled / optimized / DLL files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+**/__pycache__/
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# ==========================================
+# OpenCV & Model Cache / Weights
+# ==========================================
+*.task
+*.tflite
+*.onnx
+*.weights
+*.pb
+*.h5
+
+# ==========================================
+# IDE & Code Editors
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ==========================================
+# FastAPI / Environment Variables & Logs
+# ==========================================
+.env
+.env.local
+*.log
+logs/
+
+
+.pytest_cache/
+.coverage
+htmlcov/
