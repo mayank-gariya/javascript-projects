@@ -1,121 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clean HTML & CSS Template</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaPipe AI Suite</title>
   <style>
-    /* CSS Variables & Theme Setup */
-    :root {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --border-color: #e2e8f0;
-      --radius: 12px;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    /* Reset & Base Styles */
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding: 2rem 1rem;
+      background-color: #121212;
+      color: #ffffff;
+      padding: 24px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: space-between;
       min-height: 100vh;
     }
-
-    /* Layout Card */
-    .container {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      max-width: 480px;
-      width: 100%;
-      padding: 2.5rem 2rem;
-    }
-
-    /* Typography */
     .header {
-      margin-bottom: 1.5rem;
-    }
-
-    .title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Content Area */
-    .content {
-      font-size: 0.95rem;
-      color: var(--text-main);
-      margin-bottom: 2rem;
-    }
-
-    .content p {
-      margin-bottom: 1rem;
-    }
-
-    /* Interactive Elements */
-    .btn {
-      display: inline-block;
-      width: 100%;
       text-align: center;
-      background-color: var(--primary);
-      color: #ffffff;
+      width: 100%;
+    }
+    .title {
+      font-size: 14px;
+      color: #ff8c00;
       font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.75rem 1.25rem;
-      border-radius: calc(var(--radius) - 4px);
-      text-decoration: none;
-      border: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .author {
+      font-size: 12px;
+      color: #a0a0a0;
+      margin-top: 4px;
+    }
+
+    /* MEDIA UPLOAD AREA */
+    .upload-box {
+      width: 100%;
+      border: 2px dashed #ff8c00;
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+      background: #1e1e1e;
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      transition: all 0.3s ease;
+      margin: 20px 0;
+    }
+    .upload-box:hover {
+      background: #2a2a2a;
+      border-color: #ffa500;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+    .upload-label {
+      color: #dddddd;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    /* Hidden file input controlled by label click */
+    input[type="file"] {
+      display: none;
+    }
+    .file-name {
+      font-size: 12px;
+      color: #ff8c00;
+      margin-top: 8px;
+      word-break: break-all;
     }
 
-    .btn:hover {
-      background-color: var(--primary-hover);
+    /* BUTTON */
+    .action-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #ff8c00, #ff4500);
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    .btn:active {
-      transform: scale(0.99);
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+    }
+    .action-btn:active {
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-  <main class="container">
-    <header class="header">
-      <h1 class="title">DETECTOR</h1>
-      <p class="subtitle">A chrome extention which can Do object and text detection from images!</p>
-    </header>
+  <!-- Header Text -->
+  <div class="header">
+    <div class="title">Build with OpenCV + MediaPipe + FastAPI</div>
+    <div class="author">by Mayank</div>
+  </div>
 
-    <section class="content">
-      <p>This is the chrome extention build with Opencv Mediapipe and Fast API</p>
-    </section>
+  <!-- Media Upload Section -->
+  <div class="upload-box">
+    <label for="mediaUpload" class="upload-label">
+      <span>📁 Click or drop media here</span>
+      <!-- Hidden Native File Input -->
+      <input type="file" id="mediaUpload" accept="image/*,video/*" />
+    </label>
+    <div id="fileName" class="file-name"></div>
+  </div>
 
-    <button type="button" class="btn">Get Started</button>
-  </main>
+  <!-- Action Button -->
+  <button class="action-btn" id="hitBtn">Hit me</button>
 
 </body>
 </html>
