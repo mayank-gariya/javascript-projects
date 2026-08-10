@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clean HTML & CSS Template</title>
+  <style>
+    /* CSS Variables & Theme Setup */
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border-color: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Layout Card */
+    .container {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 480px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+    }
+
+    /* Typography */
+    .header {
+      margin-bottom: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Content Area */
+    .content {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+    }
+
+    /* Interactive Elements */
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background-color: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: calc(var(--radius) - 4px);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header class="header">
+      <h1 class="title">DETECTOR</h1>
+      <p class="subtitle">A chrome extention which can Do object and text detection from images!</p>
+    </header>
+
+    <section class="content">
+      <p>This is the chrome extention build with Opencv Mediapipe and Fast API</p>
+    </section>
+
+    <button type="button" class="btn">Get Started</button>
+  </main>
+
+</body>
+</html>
