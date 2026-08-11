@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaPipe AI Suite</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      width: 100%;
+    }
+    .title {
+      font-size: 14px;
+      color: #ff8c00;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .author {
+      font-size: 12px;
+      color: #a0a0a0;
+      margin-top: 4px;
+    }
+
+    /* MEDIA UPLOAD AREA */
+    .upload-box {
+      width: 100%;
+      border: 2px dashed #ff8c00;
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+      background: #1e1e1e;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px 0;
+    }
+    .upload-box:hover {
+      background: #2a2a2a;
+      border-color: #ffa500;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+    .upload-label {
+      color: #dddddd;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .file-name {
+      font-size: 12px;
+      color: #ff8c00;
+      margin-top: 8px;
+      word-break: break-all;
+    }
+
+    /* BUTTON */
+    .action-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #ff8c00, #ff4500);
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+    }
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    /* OUTPUT CONTAINER & CANVAS */
+    #outputContainer {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 2px solid #ff8c00;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Text -->
+  <div class="header">
+    <div class="title">Build with OpenCV + MediaPipe + FastAPI</div>
+    <div class="author">by Mayank</div>
+  </div>
+
+  <!-- Media Upload Section -->
+  <div class="upload-box">
+    <label for="mediaUpload" class="upload-label">
+      <span>📁 Click or drop media here</span>
+    </label>
+    <input type="file" id="mediaUpload" accept="image/*" />
+    <div id="fileName" class="file-name"></div>
+  </div>
+
+  <!-- Action Button -->
+  <button class="action-btn" id="hitBtn">Hit me</button>
+
+  <!-- Output Area for Rendered Image -->
+  <div id="outputContainer"></div>
+
+  <!-- Link your JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
