@@ -42,39 +42,8 @@ async def health_check():
     
 @app.post("/api/v1/analyze")
 async def process_image(payload: ImageModel):
-    # 1. Decode OpenCV BGR image
-    frame_bgr = decode(payload.image_base64)
-    height, width, _ = frame_bgr.shape
+    # Print to verify data arrives
+    print("Received payload length:", len(payload.image_base64))
     
-    # 2. Convert BGR to RGB (MediaPipe requires RGB format)
-    frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-    
-    # 3. Create MediaPipe Image object
-    mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame_rgb)
-    
-    # 4. Run object detection
-    detection_result = detector.detect(mp_image)
-    
-    # 5. Format results into clean JSON
-    detections = []
-    for detection in detection_result.detections:
-        category = detection.categories[0]
-        bbox = detection.bounding_box
-        
-        detections.append({
-            "label": category.category_name,
-            "confidence": round(float(category.score), 2),
-            "bounding_box": {
-                "x": bbox.origin_x,
-                "y": bbox.origin_y,
-                "width": bbox.width,
-                "height": bbox.height
-            }
-        })
-    
-    return {
-        "status": "success",
-        "image_info": {"width": width, "height": height},
-        "detected_count": len(detections),
-        "detections": detections
-    }
+    # Your decoding and detection code here...
+    return {"status": "success", "detections": []}

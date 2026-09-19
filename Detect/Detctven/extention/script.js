@@ -118,40 +118,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 4. Process API Request ---
   hitBtn.addEventListener('click', async () => {
-    if (!currentFile || !loadedImage) {
-      alert('Please select or drop an image file first!');
+    if (!currentFile) {
+      alert('Please select an image first!');
       return;
     }
-
-    const originalText = hitBtn.textContent;
-    hitBtn.textContent = 'Processing...';
-    hitBtn.style.opacity = '0.7';
-    hitBtn.disabled = true;
 
     try {
       const base64Image = await fileToBase64(currentFile);
 
+      // LOG THIS TO DEBUG: Make sure base64Image is a valid string
+      console.log("Sending payload sample:", base64Image.substring(0, 50));
+
       const response = await fetch('http://localhost:8000/api/v1/analyze', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image_base64: base64Image }),
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({ 
+          image_base64: base64Image // Must match Pydantic model field name exactly!
+        }),
       });
 
-      if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+      if (!response.ok) {
+        const errorDetail = await response.json();
+        console.error('FastAPI Validation Error:', errorDetail);
+        throw new Error(`HTTP ${response.status}: ${JSON.stringify(errorDetail)}`);
+      }
 
       const result = await response.json();
       console.log('FastAPI Result:', result);
 
-      // Render image + detections onto canvas
-      renderDetectionsOnCanvas(loadedImage, result.detections);
-
     } catch (error) {
-      console.error('Error during processing:', error);
-      alert('Failed to process image. Make sure FastAPI server is running on http://localhost:8000');
-    } finally {
-      hitBtn.textContent = originalText;
-      hitBtn.style.opacity = '1';
-      hitBtn.disabled = false;
+      console.error('Processing error:', error);
     }
   });
 });
