@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monkeytype clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .cursor-active {
+            border-left: 2px solid #e2b714;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #e2b714; }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#111111] text-[#646669] font-mono min-h-screen flex flex-col justify-between selection:bg-[#e2b714] selection:text-[#111111] px-6 select-none">
+
+    <header class="w-full max-w-4xl mx-auto py-8 flex justify-between items-center">
+        <a href="#" class="flex items-center gap-3 group">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 fill-white transition-transform group-hover:scale-105">
+                <path d="M2 4C0.89543 4 0 4.89543 0 6V18C0 19.1046 0.89543 20 2 20H22C23.1046 20 24 19.1046 24 18V6C24 4.89543 23.1046 4 22 4H2ZM2 6H22V18H2V6ZM4 8H6V10H4V8ZM8 8H10V10H8V8ZM14 8H16V10H14V8ZM18 8H20V10H18V8ZM4 12H9V14H4V12ZM11 12H20V14H11V12ZM4 16H8V18H4V16ZM10 16H14V18H10V16ZM16 16H20V18H16V16Z" />
+            </svg>
+            <span class="text-2xl font-bold tracking-tight text-[#d1d0c5]">monkey<span class="text-[#e2b714]">type</span></span>
+        </a>
+
+        <!-- Minimal Nav Icons / Options -->
+        <div class="flex items-center gap-5 text-lg">
+            <button class="hover:text-[#d1d0c5] transition-colors" title="Notifications">🔔</button>
+            <button class="hover:text-[#d1d0c5] transition-colors" title="Settings">⚙️</button>
+            <button class="hover:text-[#d1d0c5] transition-colors" title="Account">👤</button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl mx-auto flex-grow flex flex-col justify-center items-center">
+        
+        <div class="w-full flex justify-center items-center mb-6 bg-[#2c2e31]/40 px-4 py-2 rounded-xl text-sm gap-6 text-[#646669] backdrop-blur-sm">
+            <div class="flex gap-4">
+                <button class="mode-btn hover:text-[#d1d0c5] transition-colors" data-mode="punctuation">punctuation</button>
+                <button class="mode-btn hover:text-[#d1d0c5] transition-colors" data-mode="numbers">numbers</button>
+            </div>
+            <div class="w-[1px] h-4 bg-[#323437]"></div>
+            <div class="flex gap-4">
+                <button class="type-btn text-[#e2b714] font-semibold transition-colors" data-type="time">time</button>
+                <button class="type-btn hover:text-[#d1d0c5] transition-colors" data-type="quote">quote</button>
+            </div>
+            <div class="w-[1px] h-4 bg-[#323437]"></div>
+            <div id="time-options" class="flex gap-3 text-[#d1d0c5]">
+                <button class="time-btn hover:text-[#e2b714] transition-colors text-xs bg-[#2c2e31] px-2 py-1 rounded" data-time="15">15</button>
+                <button class="time-btn text-[#e2b714] text-xs bg-[#2c2e31] px-2 py-1 rounded font-bold" data-time="30">30</button>
+                <button class="time-btn hover:text-[#e2b714] transition-colors text-xs bg-[#2c2e31] px-2 py-1 rounded" data-time="60">60</button>
+            </div>
+        </div>
+
+        <div id="stats" class="w-full max-w-3xl flex justify-start mb-2 text-[#e2b714] text-2xl font-normal h-10 transition-opacity duration-300 opacity-100">
+            <span id="timer">30</span>
+        </div>
+
+        <div class="relative w-full max-w-3xl h-36 overflow-hidden text-2xl leading-relaxed cursor-text focus:outline-none" onclick="focusInput()">
+            
+            <input 
+                type="text" 
+                id="hidden-input" 
+                class="absolute opacity-0 pointer-events-none" 
+                autocomplete="off" 
+                autocorrect="off" 
+                autocapitalize="off" 
+                spellcheck="false"
+            >
+
+            <div id="word-display" class="flex flex-wrap gap-x-3 gap-y-2 max-h-36 overflow-hidden transition-all duration-150"></div>
+        </div>
+
+        <div class="mt-12">
+            <button id="reset-btn" class="flex items-center gap-2 text-[#646669] hover:text-[#d1d0c5] transition-colors text-sm px-4 py-2 rounded-lg group">
+                <span class="group-hover:rotate-180 transition-transform duration-300">🔄</span> restart test <span class="text-xs text-[#46484b] bg-[#2c2e31] px-1.5 py-0.5 rounded">Tab</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="w-full max-w-4xl mx-auto py-6 flex justify-between items-center text-xs text-[#46484b]">
+        <div class="flex gap-4">
+            <span class="hover:text-[#646669] cursor-pointer"><a href="https://x.com/GariyaMayank77">contact</a></span>
+            <span class="hover:text-[#646669] cursor-pointer"><a href="https://github.com/mayank-gariya">github</a></span>
+            <span class="hover:text-[#646669] cursor-pointer"><a href="https://medium.com/@mayankgariya482">Blog</a></span>
+        </div>
+        <div>
+            <span>monkeytype clone</span>
+        </div>
+        <div class="flex gap-4">
+            <span>v1.0.0</span>
+        </div>
+    </footer>
+
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+</body>
+</html>
