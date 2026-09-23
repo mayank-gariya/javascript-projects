@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>⚡ QR Generator</h1>
+    <p>Generate QR codes from text, URLs or uploaded files.</p>
+
+    <!-- TEXT SECTION -->
+    <div class="section">
+      <label for="textInput">Text or URL</label>
+
+      <input
+        type="text"
+        id="textInput"
+        placeholder="Enter text or URL here...">
+
+      <button id="textBtn">Generate Text QR</button>
+    </div>
+
+    <hr>
+
+    <!-- FILE SECTION -->
+    <div class="section">
+      <label for="fileInput">Upload File</label>
+
+      <div class="upload-area" id="uploadArea">
+        <p>📁 Drag & Drop your file here</p>
+        <span>or click to browse</span>
+
+        <input type="file" id="fileInput">
+      </div>
+
+      <button id="fileBtn">Generate File QR</button>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result">
+      <img id="qrImage" alt="Generated QR">
+
+      <a id="downloadBtn" download="qr-code.png">
+        Download QR
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html> 
