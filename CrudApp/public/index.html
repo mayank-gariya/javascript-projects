@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrudApp Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Item Management Dashboard</h1>
+        
+        <!-- Form Section -->
+        <div class="card">
+            <h2 id="form-title">Add New Item</h2>
+            <form id="item-form">
+                <input type="hidden" id="item-id">
+                <div class="form-group">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" placeholder="e.g. Laptop" required>
+                </div>
+                <div class="form-group">
+                    <label for="item-price">Price ($)</label>
+                    <input type="number" id="item-price" placeholder="e.g. 999" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="submit-btn" class="btn btn-primary">Save Item</button>
+                    <button type="button" id="cancel-btn" class="btn btn-secondary hidden" onclick="resetForm()">Cancel Edit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Inventory List -->
+        <div class="card">
+            <h2>Inventory Items</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items-table-body">
+                        <!-- Dynamic items will be added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="no-data" class="no-data">No items found. Add some above!</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
